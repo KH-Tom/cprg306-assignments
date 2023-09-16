@@ -1,11 +1,16 @@
 import Link from "next/link";
 
+let name = "Tom Ho";
+let course = "CPRG 306-SA1";
+
 export default function StudentInfo() {
   return (
     <main>
-      <h1>Tom Ho</h1>
-      <h1>Student Number: CPRG 306-SA1</h1>
-      <Link href="/">GitHub</Link>
+      <h1>Name: {name}</h1>
+      <h1>Course section: {course}</h1>
+      <Link href="https://github.com/KH-Tom/cprg306-assignments">
+        https://github.com/KH-Tom/cprg306-assignments
+      </Link>
     </main>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function NewItem() {
+export default function NewItem() {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("produce");
@@ -78,5 +78,3 @@ function NewItem() {
     </form>
   );
 }
-
-export default NewItem;

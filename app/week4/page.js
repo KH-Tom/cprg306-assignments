@@ -2,12 +2,10 @@
 
 import NewItem from "./new-item";
 
-function Page() {
+export default function Page() {
   return (
-    <div className="flex justify-center items-start h-screen">
+    <div className="flex justify-center items-start">
       <NewItem />
     </div>
   );
 }
-
-export default Page;

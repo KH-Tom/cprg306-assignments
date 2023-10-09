@@ -35,7 +35,7 @@ export default function NewItem() {
           required
           className="w-full mt-1 border-2 border-gray-300 p-2 rounded-lg font-sans"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value.toUpperCase())}
         />
       </div>
       <div className="flex justify-between">

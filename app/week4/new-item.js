@@ -8,18 +8,23 @@ export default function NewItem() {
   const [category, setCategory] = useState("produce");
 
   const handleSubmit = (event) => {
+    //Prevent the form's default submission behavior.
     event.preventDefault();
 
+    // Create a new item object
     const item = {
       name,
       quantity,
       category,
     };
 
+    // Log the new item object to the console
     console.log(item);
+
+    // Alert the user with the new item's details
     alert(`Name: ${name}, Quantity: ${quantity}, Category: ${category}`);
 
-    // Reset the form fields
+    // Reset the state variables to their initial values
     setName("");
     setQuantity(1);
     setCategory("produce");
@@ -32,17 +37,21 @@ export default function NewItem() {
     >
       <div className="mb-2">
         <input
+          // Create an input field of type text.
           type="text"
           placeholder="Item name"
           required
           className="w-full mt-1 border-2 border-gray-300 p-2 rounded-lg font-sans"
           value={name}
+          // Use the setName function in an onChange event handler to update the state of name as the user types into the field.
           onChange={(e) => setName(e.target.value.toUpperCase())}
         />
       </div>
       <div className="flex justify-between">
         <input
+          // Create an input field of type text.
           type="number"
+          // Set the minimum value to 1 and the maximum value to 99.
           min="1"
           max="99"
           required
@@ -50,7 +59,9 @@ export default function NewItem() {
           value={quantity}
           onChange={(e) => setQuantity(Number(e.target.value))}
         />
+
         <select
+          // Create a select element for the category.
           className="ml-1 border-2 border-gray-300 p-2 rounded-lg font-sans"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
@@ -71,7 +82,9 @@ export default function NewItem() {
           <option value="other">Other</option>
         </select>
       </div>
+
       <button
+        //Create a submit button that triggers the handleSubmit function when clicked.
         type="submit"
         className="w-full mt-4 py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
       >

@@ -60,24 +60,24 @@ export default function ItemList() {
       <div>
         <label htmlFor="sort">Sort by: </label>
         <button
-          className={`bg-${
-            sortBy === "name" ? "orange-500" : "orange-700"
+          className={`${
+            sortBy === "name" ? "bg-orange-500" : "bg-orange-700"
           } p-1 m-2 w-28`}
           onClick={handleSortByName}
         >
           Name
         </button>
         <button
-          className={`bg-${
-            sortBy === "category" ? "orange-500" : "orange-700"
+          className={`${
+            sortBy === "category" ? "bg-orange-500" : "bg-orange-700"
           } p-1 m-2 w-28`}
           onClick={handleSortByCategory}
         >
           Category
         </button>
         <button
-          className={`bg-${
-            sortBy === "grouped" ? "orange-500" : "orange-700"
+          className={`${
+            sortBy === "grouped" ? "bg-orange-500" : "bg-orange-700"
           } p-1 m-2 w-28`}
           onClick={handleSortByGroupedCategory}
         >

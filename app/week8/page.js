@@ -1,40 +1,28 @@
-import React from "react";
-import { useUserAuth } from "./_utils/auth-context";
+import React, { useEffect, useState } from "react";
+import { getItems, addItem } from "../_services/shopping-list-service";
 
-const LandingPage = () => {
-  const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+function ShoppingList({ user }) {
+  const [items, setItems] = useState([]);
 
-  const handleLogin = async () => {
-    try {
-      await gitHubSignIn();
-    } catch (error) {
-      console.error("Failed to sign in with GitHub:", error);
-    }
-  };
+  // Load items from Firestore
+  async function loadItems() {
+    const loadedItems = await getItems(user.uid);
+    setItems(loadedItems);
+  }
 
-  const handleLogout = async () => {
-    try {
-      await firebaseSignOut();
-    } catch (error) {
-      console.error("Failed to sign out:", error);
-    }
-  };
+  // Add a new item
+  async function handleAddItem(newItem) {
+    const id = await addItem(user.uid, newItem);
+    setItems([...items, { ...newItem, id }]);
+  }
 
-  return (
-    <div>
-      {user ? (
-        <div>
-          <p>
-            Welcome, {user.displayName} ({user.email})
-          </p>
-          <button onClick={handleLogout}>Logout</button>
-          <a href="/shopping-list">Go to Shopping List</a>
-        </div>
-      ) : (
-        <button onClick={handleLogin}>Login with GitHub</button>
-      )}
-    </div>
-  );
-};
+  // Load items on component mount
+  useEffect(() => {
+    loadItems();
+  }, []);
 
-export default LandingPage;
+  // Render your shopping list component here
+  // ...
+}
+
+export default ShoppingList;
